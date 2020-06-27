@@ -134,35 +134,23 @@
             <div>
                 <input type="number" name="attr_body" value="1">
                 <button type="roll" class="text-button text-big"
-                        value="&{template:default} {{name=Body}} {{DN=?{Target DN? |2|3|4|5|6}}} {{Result=[[@{body}d6s>?{Target DN? |2|3|4|5|6}]] successes}}"
-                        name="roll_might">Body
+                        value="!r Body @{body}+?{Body bonus|0} 0 ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
+                        name="roll_body">Body
                 </button>
             </div>
             <div>
                 <input type="number" name="attr_mind" value="1">
                 <button type="roll" class="text-button text-big"
-                        value="&{template:default} {{name=Mind}} {{DN=?{Target DN? |2|3|4|5|6}}} {{Result=[[@{mind}d6s>?{Target DN? |2|3|4|5|6}]] successes}}"
-                        name="roll_might">Mind
+                        value="!r Mind @{mind}+?{Mind bonus|0} 0 ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
+                        name="roll_mind">Mind
                 </button>
             </div>
             <div>
                 <input type="number" name="attr_soul" value="1">
                 <button type="roll" class="text-button text-big"
-                        value="&{template:default} {{name=Soul}} {{DN=?{Target DN? |2|3|4|5|6}}} {{Result=[[@{soul}d6s>?{Target DN? |2|3|4|5|6}]] successes}}"
-                        name="roll_might">Soul
+                        value="!r Soul @{mind}+?{Soul bonus|0} 0 ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
+                        name="roll_soul">Soul
                 </button>
-            </div>
-            <div>
-               Skill DN :<select name="attr_skill_dn" style="width: 50px;">
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-               </select>
-            </div>
-            <div>
-               Bonus:<input type="number" name="attr_skill_bonus" value="0">
             </div>
         </div>
     </div>
@@ -176,7 +164,7 @@
                 <div>Focus</div>
                 <div class="desc">
                     <button type="roll" class="sheet-text-button"
-                            value="!r Arcana @{arcana_attribute}+@{arcana_1}+@{arcana_2}+@{arcana_3}+@{skill_bonus} @{arcana_focus_1}+@{arcana_focus_2}+@{arcana_focus_3} ?{Target DN? |2|3|4|5|6}"
+                            value="!r Arcana @{arcana_attribute}+@{arcana_1}+@{arcana_2}+@{arcana_3}+?{Arcana bonus|0} @{arcana_focus_1}+@{arcana_focus_2}+@{arcana_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
                             name="roll_arcana">Arcana
                     </button>
                     <select class="attribute-select" name="attr_arcana_attribute">
@@ -198,7 +186,7 @@
 
                 <div class="desc">
                     <button type="roll" class="sheet-text-button"
-                            value="!r Athletics @{athletics_attribute}+@{athletics_1}+@{athletics_2}+@{athletics_3}+@{skill_bonus} @{athletics_focus_1}+@{athletics_focus_2}+@{athletics_focus_3} ?{Target DN? |2|3|4|5|6}"
+                            value="!r Athletics @{athletics_attribute}+@{athletics_1}+@{athletics_2}+@{athletics_3}+?{Athletics bonus|0} @{athletics_focus_1}+@{athletics_focus_2}+@{athletics_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
                             name="roll_athletics">Athletics
                     </button>
                     <select class="attribute-select" name="attr_athletics_attribute">
@@ -220,7 +208,7 @@
 
                 <div class="desc">
                     <button type="roll" class="sheet-text-button"
-                            value="!r Awareness @{awareness_attribute}+@{awareness_1}+@{awareness_2}+@{awareness_3}+@{skill_bonus} @{awareness_focus_1}+@{awareness_focus_2}+@{awareness_focus_3} ?{Target DN? |2|3|4|5|6}"
+                            value="!r Awareness @{awareness_attribute}+@{awareness_1}+@{awareness_2}+@{awareness_3}+?{Awareness bonus|0} @{awareness_focus_1}+@{awareness_focus_2}+@{awareness_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
                             name="roll_awareness">Awareness
                     </button>
                     <select class="attribute-select" name="attr_awareness_attribute">
@@ -242,7 +230,7 @@
 
                 <div class="desc">
                     <button type="roll" class="sheet-text-button"
-                            value="!r BallisticSkill @{ballistic_skill_attribute}+@{ballistic_skill_1}+@{ballistic_skill_2}+@{ballistic_skill_3}+@{skill_bonus} @{ballistic_skill_focus_1}+@{awareness_focus_2}+@{ballistic_skill_focus_3} ?{Target DN? |2|3|4|5|6}"
+                            value="!r BallisticSkill @{ballistic_skill_attribute}+@{ballistic_skill_1}+@{ballistic_skill_2}+@{ballistic_skill_3}+?{Ballistic skill bonus|0} @{ballistic_skill_focus_1}+@{awareness_focus_2}+@{ballistic_skill_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
                             name="roll_ballistic_skill">Ballistic skill
                     </button>
                     <select class="attribute-select" name="attr_ballistic_skill_attribute">
@@ -264,7 +252,7 @@
 
                 <div class="desc">
                     <button type="roll" class="sheet-text-button"
-                            value="!r BeastHandling @{beast_handling_attribute}+@{beast_handling_1}+@{beast_handling_2}+@{beast_handling_3}+@{skill_bonus} @{beast_handling_focus_1}+@{beast_handling_focus_2}+@{beast_handling_focus_3} ?{Target DN? |2|3|4|5|6}"
+                            value="!r BeastHandling @{beast_handling_attribute}+@{beast_handling_1}+@{beast_handling_2}+@{beast_handling_3}+?{Beast Handling bonus|0} @{beast_handling_focus_1}+@{beast_handling_focus_2}+@{beast_handling_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
                             name="roll_beast_handling">Beast Handling
                     </button>
                     <select class="attribute-select" name="attr_beast_handling_attribute">
@@ -286,7 +274,7 @@
 
                 <div class="desc">
                     <button type="roll" class="sheet-text-button"
-                            value="!r Channeling @{channelling_attribute}+@{channelling_1}+@{channelling_2}+@{channelling_3}+@{skill_bonus} @{channelling_focus_1}+@{channelling_focus_2}+@{channelling_focus_3} ?{Target DN? |2|3|4|5|6}"
+                            value="!r Channeling @{channelling_attribute}+@{channelling_1}+@{channelling_2}+@{channelling_3}+?{Channelling bonus|0} @{channelling_focus_1}+@{channelling_focus_2}+@{channelling_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
                             name="roll_channelling">Channelling
                     </button>
                     <select class="attribute-select" name="attr_channelling_attribute">
@@ -308,7 +296,7 @@
 
                 <div class="desc">
                     <button type="roll" class="sheet-text-button"
-                            value="!r Crafting @{crafting_attribute}+@{crafting_1}+@{crafting_2}+@{crafting_3}+@{skill_bonus} @{crafting_focus_1}+@{crafting_focus_2}+@{crafting_focus_3} ?{Target DN? |2|3|4|5|6}"
+                            value="!r Crafting @{crafting_attribute}+@{crafting_1}+@{crafting_2}+@{crafting_3}+?{Crafting bonus|0} @{crafting_focus_1}+@{crafting_focus_2}+@{crafting_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
                             name="roll_crafting">Crafting
                     </button>
                     <select class="attribute-select" name="attr_crafting_attribute">
@@ -330,7 +318,7 @@
 
                 <div class="desc">
                     <button type="roll" class="sheet-text-button"
-                            value="!r Determination @{determination_attribute}+@{determination_1}+@{determination_2}+@{determination_3}+@{skill_bonus} @{determination_focus_1}+@{determination_focus_2}+@{determination_focus_3} ?{Target DN? |2|3|4|5|6}"
+                            value="!r Determination @{determination_attribute}+@{determination_1}+@{determination_2}+@{determination_3}+?{Determination bonus|0} @{determination_focus_1}+@{determination_focus_2}+@{determination_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
                             name="roll_determination">Determination
                     </button>
                     <select class="attribute-select" name="attr_determination_attribute">
@@ -352,7 +340,7 @@
 
                 <div class="desc">
                     <button type="roll" class="sheet-text-button"
-                            value="!r Devotion @{devotion_attribute}+@{devotion_1}+@{devotion_2}+@{devotion_3}+@{skill_bonus} @{devotion_focus_1}+@{devotion_focus_2}+@{devotion_focus_3} ?{Target DN? |2|3|4|5|6}"
+                            value="!r Devotion @{devotion_attribute}+@{devotion_1}+@{devotion_2}+@{devotion_3}+?{Devotion bonus|0} @{devotion_focus_1}+@{devotion_focus_2}+@{devotion_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
                             name="roll_devotion">Devotion
                     </button>
                     <select class="attribute-select" name="attr_devotion_attribute">
@@ -374,7 +362,7 @@
 
                 <div class="desc">
                     <button type="roll" class="sheet-text-button"
-                            value="!r Dexterity @{dexterity_attribute}+@{dexterity_1}+@{dexterity_2}+@{dexterity_3}+@{skill_bonus} @{dexterity_focus_1}+@{dexterity_focus_2}+@{dexterity_focus_3} ?{Target DN? |2|3|4|5|6}"
+                            value="!r Dexterity @{dexterity_attribute}+@{dexterity_1}+@{dexterity_2}+@{dexterity_3}+?{Dexterity bonus|0} @{dexterity_focus_1}+@{dexterity_focus_2}+@{dexterity_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
                             name="roll_dexterity">Dexterity
                     </button>
                     <select class="attribute-select" name="attr_dexterity_attribute">
@@ -396,7 +384,7 @@
 
                 <div class="desc">
                     <button type="roll" class="sheet-text-button"
-                            value="!r Entertain @{entertain_attribute}+@{entertain_1}+@{entertain_2}+@{entertain_3}+@{skill_bonus} @{entertain_focus_1}+@{entertain_focus_2}+@{entertain_focus_3} ?{Target DN? |2|3|4|5|6}"
+                            value="!r Entertain @{entertain_attribute}+@{entertain_1}+@{entertain_2}+@{entertain_3}+?{Entertain bonus|0} @{entertain_focus_1}+@{entertain_focus_2}+@{entertain_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
                             name="roll_entertain">Entertain
                     </button>
                     <select class="attribute-select" name="attr_entertain_attribute">
@@ -418,7 +406,7 @@
 
                 <div class="desc">
                     <button type="roll" class="sheet-text-button"
-                            value="!r Fortitude @{fortitude_attribute}+@{fortitude_1}+@{fortitude_2}+@{fortitude_3}+@{skill_bonus} @{fortitude_focus_1}+@{fortitude_focus_2}+@{fortitude_focus_3} ?{Target DN? |2|3|4|5|6}"
+                            value="!r Fortitude @{fortitude_attribute}+@{fortitude_1}+@{fortitude_2}+@{fortitude_3}+?{Fortitude bonus|0} @{fortitude_focus_1}+@{fortitude_focus_2}+@{fortitude_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
                             name="roll_fortitude">Fortitude
                     </button>
                     <select class="attribute-select" name="attr_fortitude_attribute">
@@ -446,7 +434,7 @@
 
                 <div class="desc">
                     <button type="roll" class="sheet-text-button"
-                            value="!r Guile @{guile_attribute}+@{guile_1}+@{guile_2}+@{guile_3}+@{skill_bonus} @{guile_focus_1}+@{guile_focus_2}+@{guile_focus_3} ?{Target DN? |2|3|4|5|6}"
+                            value="!r Guile @{guile_attribute}+@{guile_1}+@{guile_2}+@{guile_3}+?{Guile bonus|0} @{guile_focus_1}+@{guile_focus_2}+@{guile_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
                             name="roll_guile">Guile
                     </button>
                     <select class="attribute-select" name="attr_guile_attribute">
@@ -468,7 +456,7 @@
 
                 <div class="desc">
                     <button type="roll" class="sheet-text-button"
-                            value="!r Intimidation @{intimidation_attribute}+@{intimidation_1}+@{intimidation_2}+@{intimidation_3}+@{skill_bonus} @{intimidation_focus_1}+@{intimidation_focus_2}+@{intimidation_focus_3} ?{Target DN? |2|3|4|5|6}"
+                            value="!r Intimidation @{intimidation_attribute}+@{intimidation_1}+@{intimidation_2}+@{intimidation_3}+?{Intimidation bonus|0} @{intimidation_focus_1}+@{intimidation_focus_2}+@{intimidation_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
                             name="roll_intimidation">Intimidation
                     </button>
                     <select class="attribute-select" name="attr_intimidation_attribute">
@@ -490,7 +478,7 @@
 
                 <div class="desc">
                     <button type="roll" class="sheet-text-button"
-                            value="!r Intuition @{intuition_attribute}+@{intuition_1}+@{intuition_2}+@{intuition_3}+@{skill_bonus} @{intuition_focus_1}+@{intuition_focus_2}+@{intuition_focus_3} ?{Target DN? |2|3|4|5|6}"
+                            value="!r Intuition @{intuition_attribute}+@{intuition_1}+@{intuition_2}+@{intuition_3}+?{Intuition bonus|0} @{intuition_focus_1}+@{intuition_focus_2}+@{intuition_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
                             name="roll_intuition">Intuition
                     </button>
                     <select class="attribute-select" name="attr_intuition_attribute">
@@ -512,7 +500,7 @@
 
                 <div class="desc">
                     <button type="roll" class="sheet-text-button"
-                            value="!r Lore @{lore_attribute}+@{lore_1}+@{lore_2}+@{lore_3}+@{skill_bonus} @{lore_focus_1}+@{lore_focus_2}+@{lore_focus_3} ?{Target DN? |2|3|4|5|6}"
+                            value="!r Lore @{lore_attribute}+@{lore_1}+@{lore_2}+@{lore_3}+?{Lore bonus|0} @{lore_focus_1}+@{lore_focus_2}+@{lore_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
                             name="roll_lore">Lore
                     </button>
                     <select class="attribute-select" name="attr_lore_attribute">
@@ -534,7 +522,7 @@
 
                 <div class="desc">
                     <button type="roll" class="sheet-text-button"
-                            value="!r Medicine @{medicine_attribute}+@{medicine_1}+@{medicine_2}+@{medicine_3}+@{skill_bonus} @{medicine_focus_1}+@{medicine_focus_2}+@{medicine_focus_3} ?{Target DN? |2|3|4|5|6}"
+                            value="!r Medicine @{medicine_attribute}+@{medicine_1}+@{medicine_2}+@{medicine_3}+?{Medicine bonus|0} @{medicine_focus_1}+@{medicine_focus_2}+@{medicine_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
                             name="roll_medicine">Medicine
                     </button>
                     <select class="attribute-select" name="attr_medicine_attribute">
@@ -556,7 +544,7 @@
 
                 <div class="desc">
                     <button type="roll" class="sheet-text-button"
-                            value="!r Might @{might_attribute}+@{might_1}+@{might_2}+@{might_3}+@{skill_bonus} @{might_focus_1}+@{might_focus_2}+@{might_focus_3} ?{Target DN? |2|3|4|5|6}"
+                            value="!r Might @{might_attribute}+@{might_1}+@{might_2}+@{might_3}+?{Might bonus|0} @{might_focus_1}+@{might_focus_2}+@{might_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
                             name="roll_might">Might
                     </button>
                     <select class="attribute-select" name="attr_might_attribute">
@@ -578,7 +566,7 @@
 
                 <div class="desc">
                     <button type="roll" class="sheet-text-button"
-                            value="!r Nature @{nature_attribute}+@{nature_1}+@{nature_2}+@{nature_3}+@{skill_bonus} @{nature_focus_1}+@{nature_focus_2}+@{nature_focus_3} ?{Target DN? |2|3|4|5|6}"
+                            value="!r Nature @{nature_attribute}+@{nature_1}+@{nature_2}+@{nature_3}+?{Nature bonus|0} @{nature_focus_1}+@{nature_focus_2}+@{nature_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
                             name="roll_nature">Nature
                     </button>
                     <select class="attribute-select" name="attr_nature_attribute">
@@ -600,7 +588,7 @@
 
                 <div class="desc">
                     <button type="roll" class="sheet-text-button"
-                            value="!r Reflexes @{reflexes_attribute}+@{reflexes_1}+@{reflexes_2}+@{reflexes_3}+@{skill_bonus} @{reflexes_focus_1}+@{reflexes_focus_2}+@{reflexes_focus_3} ?{Target DN? |2|3|4|5|6}"
+                            value="!r Reflexes @{reflexes_attribute}+@{reflexes_1}+@{reflexes_2}+@{reflexes_3}+?{Reflexes bonus|0} @{reflexes_focus_1}+@{reflexes_focus_2}+@{reflexes_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
                             name="roll_reflexes">Reflexes
                     </button>
                     <select class="attribute-select" name="attr_reflexes_attribute">
@@ -622,7 +610,7 @@
 
                 <div class="desc">
                     <button type="roll" class="sheet-text-button"
-                            value="!r Stealth @{stealth_attribute}+@{stealth_1}+@{stealth_2}+@{stealth_3}+@{skill_bonus} @{stealth_focus_1}+@{stealth_focus_2}+@{stealth_focus_3} ?{Target DN? |2|3|4|5|6}"
+                            value="!r Stealth @{stealth_attribute}+@{stealth_1}+@{stealth_2}+@{stealth_3}+?{Stealth bonus|0} @{stealth_focus_1}+@{stealth_focus_2}+@{stealth_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
                             name="roll_stealth">Stealth
                     </button>
                     <select class="attribute-select" name="attr_stealth_attribute">
@@ -644,7 +632,7 @@
 
                 <div class="desc">
                     <button type="roll" class="sheet-text-button"
-                            value="!r Survival @{survival_attribute}+@{survival_1}+@{survival_2}+@{survival_3}+@{skill_bonus} @{survival_focus_1}+@{survival_focus_2}+@{survival_focus_3} ?{Target DN? |2|3|4|5|6}"
+                            value="!r Survival @{survival_attribute}+@{survival_1}+@{survival_2}+@{survival_3}+?{Survival bonus|0} @{survival_focus_1}+@{survival_focus_2}+@{survival_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
                             name="roll_survival">Survival
                     </button>
                     <select class="attribute-select" name="attr_survival_attribute">
@@ -666,7 +654,7 @@
 
                 <div class="desc">
                     <button type="roll" class="sheet-text-button"
-                            value="!r Theology @{theology_attribute}+@{theology_1}+@{theology_2}+@{theology_3}+@{skill_bonus} @{theology_focus_1}+@{theology_focus_2}+@{theology_focus_3} ?{Target DN? |2|3|4|5|6}"
+                            value="!r Theology @{theology_attribute}+@{theology_1}+@{theology_2}+@{theology_3}+?{Theology bonus|0} @{theology_focus_1}+@{theology_focus_2}+@{theology_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
                             name="roll_theology">Theology
                     </button>
                     <select class="attribute-select" name="attr_theology_attribute">
@@ -688,7 +676,7 @@
 
                 <div class="desc">
                     <button type="roll" class="sheet-text-button"
-                            value="!r WeaponSkill @{weapon_skill_attribute}+@{weapon_skill_1}+@{weapon_skill_2}+@{weapon_skill_3}+@{skill_bonus} @{weapon_skill_focus_1}+@{weapon_skill_focus_2}+@{weapon_skill_focus_3} ?{Target DN? |2|3|4|5|6}"
+                            value="!r WeaponSkill @{weapon_skill_attribute}+@{weapon_skill_1}+@{weapon_skill_2}+@{weapon_skill_3}+?{Weapon Skill bonus|0} @{weapon_skill_focus_1}+@{weapon_skill_focus_2}+@{weapon_skill_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private}"
                             name="roll_weapon_skill">Weapon Skill
                     </button>
                     <select class="attribute-select" name="attr_weapon_skill_attribute">

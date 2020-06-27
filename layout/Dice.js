@@ -18,9 +18,9 @@ SoulboundDice = (function() {
 
     //This is a simple way to process the input focus/number of dice
     function DoPlusMinus(s) {
-       var total = 0,
+       var total = 0
+       s = s.replace("+-", "-")
        s = s.match(/[+\-]*(\.\d+|\d+(\.\d+)?)/g) || [];
-      
        while (s.length) {
           total += parseFloat(s.shift());
        }
@@ -202,10 +202,15 @@ SoulboundDice = (function() {
                 var dice = DoPlusMinus(match[1]);
                 var focus = DoPlusMinus(match[2]);
                 var dn = match[3];
-                var notes = match[4];
+                var disp = match[4];
+                var notes = match[5];
+                prefix = ''
+                if(disp == "Private") {
+                    prefix = '/w "' + character.get('name') + '" '
+                }
                 if(match) {
                     performRoll(character.get('name'), skillName, dice, focus, dn).then(res => {
-	                      sendChat(character.get('name'), res);
+	                      sendChat(character.get('name'), prefix+res);
                       }).catch(e=>{
                         sendChat("ERROR", "/w " + msg.who + " Error processing roll: " + msg.content);
                         log('AOS Dice ERROR: ' + err.message);
