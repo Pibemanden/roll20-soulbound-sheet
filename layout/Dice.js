@@ -203,14 +203,18 @@ SoulboundDice = (function() {
                 var focus = DoPlusMinus(match[2]);
                 var dn = match[3];
                 var disp = match[4];
-                var notes = match[5];
+                var notes = ""
+                for(var i = 5; i < match.length; ++i) {
+                   notes += " " + match[i]
+                }
+                log(notes)
                 prefix = ''
                 if(disp == "Private") {
                     prefix = '/w "' + character.get('name') + '" '
                 }
                 if(match) {
                     performRoll(character.get('name'), skillName, dice, focus, dn).then(res => {
-	                      sendChat(character.get('name'), prefix+res);
+	                      sendChat(character.get('name'), prefix+res+notes);
                       }).catch(e=>{
                         sendChat("ERROR", "/w " + msg.who + " Error processing roll: " + msg.content);
                         log('AOS Dice ERROR: ' + err.message);

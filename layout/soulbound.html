@@ -887,7 +887,7 @@
     <div class="weapons">
         <input type="text" name="attr_melee_name">
         <button type="roll" name="roll_melee_attack"
-                value="&{template:default} {{name=@{melee_name}}} {{DN=?{Target DN? |2|3|4|5|6}}} {{Result=[[(@{weapon_skill_attribute}+@{weapon_skill_1}+@{weapon_skill_2}+@{weapon_skill_3}+?{Melee bonus|0})d6s>?{Target DN? |2|3|4|5|6}]] successes}} {{Focus=[[@{weapon_skill_focus_1} + @{weapon_skill_focus_2} + @{weapon_skill_focus_3}]] focus points}} {{Extra Damage=@{melee_damage}}} {{Traits=@{melee_traits}}}"></button>
+                value="!r @{melee_name} @{weapon_skill_attribute}+@{weapon_skill_1}+@{weapon_skill_2}+@{weapon_skill_3}+?{Melee bonus|0} @{weapon_skill_focus_1}+@{weapon_skill_focus_2}+@{weapon_skill_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private} {{Extra Damage=@{melee_damage}}} {{Traits=@{melee_traits}}}"></button>
         <input type="number" disabled="true" name="attr_melee_pool"
                value="@{body} + @{weapon_skill_1} + @{weapon_skill_2} + @{weapon_skill_3}">
         <input type="number" name="attr_melee_focus" disabled="true"
@@ -909,7 +909,7 @@
     <div class="weapons">
         <input type="text" name="attr_ranged_name"/>
         <button type="roll" name="roll_ranged_attack"
-                value="&{template:default} {{name=@{ranged_name}}} {{DN=?{Target DN? |2|3|4|5|6}}} {{Result=[[(@{ballistic_skill_attribute}+@{ballistic_skill_1}+@{ballistic_skill_2}+@{ballistic_skill_3}+?{Ranged bonus|0})d6s>?{Target DN? |2|3|4|5|6}]] successes}} {{Focus=[[@{ballistic_skill_focus_1} + @{ballistic_skill_focus_2} + @{ballistic_skill_focus_3}]] focus points}} {{Extra Damage=@{ranged_damage}}} {{Traits=@{ranged_traits}}}"></button>
+                value="!r @{ranged_name} @{ballistic_skill_attribute}+@{ballistic_skill_1}+@{ballistic_skill_2}+@{ballistic_skill_3}+?{Ranged bonus|0} @{ballistic_skill_focus_1}+@{ballistic_skill_focus_2}+@{ballistic_skill_focus_3} ?{Target DN? |2|3|4|5|6} ?{Message |Public|Private} {{Extra Damage=@{ranged_damage}}} {{Traits=@{ranged_traits}}}"></button>
         <input type="number" disabled="true" name="attr_ranged_pool"
                value="@{body} + @{ballistic_skill_1} + @{ballistic_skill_2} + @{ballistic_skill_3}"/>
         <input type="number" name="attr_ranged_focus" disabled="true"
@@ -934,7 +934,7 @@
     <div class="spells">
         <input type="text" name="attr_spell_name"/>
         <button type="roll" name="roll_spell"
-                value="&{template:default} {{name=@{spell_name}}} {{DN=@{spell_dn_target}:@{spell_dn_successes}}} {{Result=[[(@{mind} + @{channelling_1} + @{channelling_2} + @{channelling_3} + ?{Spellcasting bonus|0})d6s>@{spell_dn_target}]] success}} {{Focus=[[@{channelling_focus_1} + @{channelling_focus_2} + @{channelling_focus_3}]] focus points}}} {{Effect=@{spell_effect}}}"></button>
+                  value="!r @{spell_name} @{mind}+@{channelling_1}+@{channelling_2}+@{channelling_3}+?{Spellcasting bonus|0} @{channelling_focus_1}+@{channelling_focus_2}+@{channelling_focus_3} @{spell_dn_target} ?{Message |Public|Private} {{DN=@{spell_dn_target}:@{spell_dn_successes}}} {{Effect=@{spell_effect}}}"></button>
         <div class="spells-dn">
             <input type="number" name="attr_spell_dn_target" class="no-spin small-digit colon-separator-left">
             <span class="colon-separator">:</span>
